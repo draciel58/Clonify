@@ -19,9 +19,11 @@ def signupuser(request):
 			user.save()
 			email_message = request.POST['email']
 			send_mail(
-				'clonify',
-				'',
+				'Welcome To Clonify!',
+				'We urge to serve you the best way possible!',
+				'Founders - Aziz Sharif, Mukul Choudhury',
 				'azizsharif2000@gmail.com',
+				'stuffmukuldoes@gmail.com',
 				[email_message],
 				fail_silently=False
 				)
