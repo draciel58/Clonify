@@ -1,18 +1,64 @@
 {% extends 'cloneapp/base.html' %}
 {% block main_content %}
 
-<div class="alert alert-danger">{{error}}</div>
-<div class="form-group">
-<form method="POST">
-	{% csrf_token %}
-	{{form.as_p}}
+<style>
+	*{
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	
+	.nav-link{
+      color: white;
+		}
+	.container{
+		display: flex;
+		flex-direction: column;
+		width: 45%;
+		margin: 0 auto;
+	}
+	.btn-primary{
+		border-color: transparent !important;
+	}
 
+	.signup-button{
+		margin-top: 40px;
+		width:50%;
+		background:linear-gradient(to right,white, black) ;
+		color: white;
+	}
+	.signup-button:hover{
+		background:linear-gradient(to right,aquamarine, white) ;
+		color: black;
+	}
+	.already-last-line{
+		margin-top: 20px;
+		color: white;
+	}
+	.already-last-line a{
+		color: rgb(39, 241, 197);
+	}
+	.signup-form-header{
+		color: white;	
+	}
+</style>
 
-<br>	
-<button class="btn btn-primary" type="submit">Sign up</button>	
-</form>
+<div class="container">
+	<h1 class="signup-form-header">SIGN UP</h1>
+	<div class="form-group">
+		<form method="POST">
+			{% csrf_token %}
+			{{form.as_p}}
+
+			<button class="btn btn-primary signup-button" type="submit">Sign up</button>	
+		</form>
+	</div>
+		
+	<h6 class='already-last-line'>
+		Already have an account? 
+		<a href="{% url 'loginuser' %}">Login</a>
+	</h6>
 </div>
-<br>
-<small>Already have an account? <a href="{% url 'loginuser' %}">Login</a></small>
 
 {% endblock %}
