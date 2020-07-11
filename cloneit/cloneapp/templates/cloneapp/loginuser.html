@@ -1,0 +1,14 @@
+{% extends 'cloneapp/base.html' %}
+{% block main_content %}
+
+<div class="alert alert-danger">{{error}}</div>
+<form method="POST">
+	{% csrf_token %}
+	{{form.as_p}}
+<button class="btn btn-primary" type="submit">Login</button>	
+</form>
+
+<small>Create an account, <a href="{% url 'signupuser' %}">signup</a></small>
+
+
+{% endblock %}
