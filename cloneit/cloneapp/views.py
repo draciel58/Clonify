@@ -20,10 +20,8 @@ def signupuser(request):
 			email_message = request.POST['email']
 			send_mail(
 				'Welcome To Clonify!',
-				'We urge to serve you the best way possible!',
-				'Founders - Aziz Sharif, Mukul Choudhury',
-				'azizsharif2000@gmail.com',
-				'stuffmukuldoes@gmail.com',
+				'We urge to serve you the best way possible! Founders - Aziz Sharif, Mukul Choudhury',
+				'dracielraven589@gmail.com',
 				[email_message],
 				fail_silently=False
 				)
