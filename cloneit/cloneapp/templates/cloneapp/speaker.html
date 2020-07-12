@@ -1,0 +1,16 @@
+{% extends 'cloneapp/base2.html' %}
+{% block main_content %}
+
+<h1>Speakers</h1>
+
+{% for speaker in speaker %}
+
+<h1>{{speaker.name}}</h1>
+<h3>{{speaker.description}}</h3>
+<h3>{{speaker.price}}Rs.</h3>
+
+{% endfor %}
+
+<a href="{% url 'home' %}">Back to home</a>
+
+{% endblock %}

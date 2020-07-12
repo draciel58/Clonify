@@ -1,0 +1,9 @@
+{% extends 'cloneapp/base.html' %}
+{% block main_content %}
+
+<h1>Welcome, {{user.username}}</h1>
+<a href="{% url 'laptop' %}">Laptops</a>
+<a href="{% url 'mobile' %}">mobiles</a>
+<a href="{% url 'speaker' %}">speakers</a>
+
+{% endblock %}

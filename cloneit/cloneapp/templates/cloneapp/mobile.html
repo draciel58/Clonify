@@ -1,0 +1,16 @@
+{% extends 'cloneapp/base2.html' %}
+{% block main_content %}
+
+<h1>Mobiles</h1>
+
+{% for mobile in mobile %}
+
+<h1>{{mobile.name}}</h1>
+<h3>{{mobile.description}}</h3>
+<h3>{{mobile.price}}Rs.</h3>
+
+{% endfor %}
+
+<a href="{% url 'home' %}">Back to home</a>
+
+{% endblock %}
