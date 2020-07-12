@@ -1,8 +1,159 @@
 {% extends 'cloneapp/base2.html' %}
 {% block main_content %}
 
-<h1>Laptops</h1>
+<style>
+  * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 
+*::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+.banner {
+  height: 60vh;
+  width: 100%;
+  position: relative;
+}
+
+.banner img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+
+.company-header {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -70%);
+          transform: translate(-50%, -70%);
+  color: white;
+  text-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.laptop-subs img {
+  width: 250px;
+  height: 250px;
+}
+
+.laptop-brand, .laptop-subs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  padding: 80px 0px;
+}
+
+.brand-description h3, .subs-description h3 {
+  font-size: 36px;
+  padding-bottom: 30px;
+}
+
+.brand-description p, .subs-description p {
+  padding: 20px 0px;
+  font-size: 20px;
+}
+
+.laptop-gallery {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (250px);
+      grid-template-columns: repeat(3, 250px);
+}
+
+.laptop-gallery img {
+  padding: 5px;
+}
+
+@media (max-width: 1024px) {
+  .banner {
+    height: 40vh;
+  }
+  .laptop-brand {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .laptop-subs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .brand-description, .subs-description {
+    width: 100%;
+    text-align: center;
+  }
+  .laptop-gallery {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+/*# sourceMappingURL=laptopstyle.css.map */
+</style>
+
+<main>
+  <div class="banner">
+    <img src="./home assets/Laptops page main 2.jpg" alt="Laptop Photo">
+
+    <div class="company-header">
+      <h1>LAPTOPS</h1>
+      <h2>Apple | Asus | Dell | HP</h2>
+    </div>
+  </div>
+  {% for laptop in laptop %}
+  <div class="laptop-brand">
+    <div class="brand-description">
+      <h3>{{laptop.name}}</h3>
+    </div>
+    <img src="./home assets/Laptops page main.jpg" alt="" style="width: 300px;
+    height: 300px;">
+  </div>
+  <div class="laptop-subs">
+    <div class="subs-description">
+      <h3>Product Description</h3>
+      <p>{{laptop.description}}</p>
+    </div>
+    <div class="laptop-gallery">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+    </div>
+  </div>
+  {% endfor %}
+  <a class="back-to-home"href="{% url 'home' %}">Back to home</a>
+</main>
+<!--
 {% for laptop in laptop %}
 
 <h1>{{laptop.name}}</h1>
@@ -10,7 +161,6 @@
 <h3>{{laptop.price}}Rs.</h3>
 
 {% endfor %}
-
-<a href="{% url 'home' %}">Back to home</a>
+-->
 
 {% endblock %}
