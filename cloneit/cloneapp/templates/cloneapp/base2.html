@@ -9,12 +9,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/92e551cba2.js" crossorigin="anonymous"></script>
   
+
+  <style>
+    footer {
+       display: flex;
+       padding: 20px;
+       background-color: rgb(0, 0, 0);
+       color: white;
+       text-align: center;
+       justify-content: center;
+    }
+    .back-to-home {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
+    
 </head>
 
  <body> 
   
- {% block main_content %}
- {% endblock %}	
+  {% block main_content %}
+  {% endblock %}	
+   
+  <footer class="container-fluid footer">
+     <div class=""> 
+       <a class="back-to-home"href="{% url 'home' %}">Back To Home</a>
+    </div>
+  </footer>
+  
+  
 
 
 

@@ -86,6 +86,7 @@ body {
   padding: 5px;
 }
 
+
 @media (max-width: 1024px) {
   .banner {
     height: 40vh;
@@ -116,6 +117,7 @@ body {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 }
+
 /*# sourceMappingURL=laptopstyle.css.map */
 </style>
 
@@ -140,6 +142,8 @@ body {
     <div class="subs-description">
       <h3>Product Description</h3>
       <p>{{laptop.description}}</p>
+      <h2>Price</h2>
+      <h4>{{laptop.price}}</h4>
     </div>
     <div class="laptop-gallery">
       <img src="./home assets/Laptops page main.jpg" alt="">
@@ -151,8 +155,9 @@ body {
     </div>
   </div>
   {% endfor %}
-  <a class="back-to-home"href="{% url 'home' %}">Back to home</a>
+  
 </main>
+
 <!--
 {% for laptop in laptop %}
 
