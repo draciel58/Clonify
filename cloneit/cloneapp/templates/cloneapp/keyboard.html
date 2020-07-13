@@ -1,0 +1,162 @@
+{% extends 'cloneapp/base2.html' %}
+{% block main_content %}
+{%load static %}
+
+<style>
+  * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+*::after, *::before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+.banner {
+  height: 60vh;
+  width: 100%;
+  position: relative;
+}
+
+.banner img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+
+.company-header {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -70%);
+          transform: translate(-50%, -70%);
+  color: white;
+  text-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.laptop-subs img {
+  width: 250px;
+  height: 250px;
+}
+
+.laptop-brand, .laptop-subs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  padding: 80px 0px;
+}
+
+.brand-description h3, .subs-description h3 {
+  font-size: 36px;
+  padding-bottom: 30px;
+}
+
+.brand-description p, .subs-description p {
+  padding: 20px 0px;
+  font-size: 20px;
+}
+
+.laptop-gallery {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (250px);
+      grid-template-columns: repeat(3, 250px);
+}
+
+.laptop-gallery img {
+  padding: 5px;
+}
+
+
+@media (max-width: 1024px) {
+  .banner {
+    height: 40vh;
+  }
+  .laptop-brand {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .laptop-subs {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .brand-description, .subs-description {
+    width: 100%;
+    text-align: center;
+  }
+  .laptop-gallery {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/*# sourceMappingURL=laptopstyle.css.map */
+</style>
+
+<main>
+  <div class="banner">
+    <img src='{% static "cloneapp/keyboard banner2.jpg" %}' alt="keyboard Photo">
+
+    <div class="company-header">
+      <h1>KEYBOARDS</h1>
+      <h2>Red-Gear | Cosmic -Byte | Logitech | Corsair</h2>
+    </div>
+  </div>
+  {% for keyboard in keyboard %}
+  <div class="laptop-brand">
+    <div class="brand-description">
+      <h3>{{keyboard.name}}</h3>
+    </div>
+    <img src="{{keyboard.image.url}}" alt="" style="width: 600px;
+    height: 300px;">
+  </div>
+  <div class="laptop-subs">
+    <div class="subs-description">
+      <h3>Product Description</h3>
+      <p>{{keyboard.description}}</p>
+      <h2>Price</h2>
+      <h4>{{keyboard.price}}</h4>
+    </div>
+    <div class="laptop-gallery">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+      <img src="./home assets/Laptops page main.jpg" alt="">
+    </div>
+  </div>
+  {% endfor %}
+  
+</main>
+
+{% endblock %}

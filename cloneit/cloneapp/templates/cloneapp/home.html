@@ -1,0 +1,479 @@
+{% extends 'cloneapp/base2.html' %}
+{% block main_content %}
+{% load static %}
+
+<style>
+  * {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  *::after, *::before {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+  }
+  
+  .portfolio {
+    color: white;
+    background: radial-gradient(#2b3760, #0b1023);
+  }
+  
+  nav {
+    min-height: 10vh;
+    width: 90%;
+    margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 20px 0px;
+  }
+  
+  .page {
+    min-height: 90vh;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 5% 1fr 1fr 1fr 5%;
+        grid-template-columns: 5% 1fr 1fr 1fr 5%;
+  }
+  
+  .page .headphones, .page .key-mouse {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+  
+  .hero {
+    overflow: hidden;
+    height: 500px;
+    -ms-flex-item-align: center;
+        align-self: center;
+    justify-self: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .hero img {
+    height: 300px;
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    transition: -webkit-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    cursor: pointer;
+    -webkit-box-shadow: 10px 15px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 10px 15px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hero a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  
+  .model-right {
+    -webkit-transform: translate(0%, 10%);
+            transform: translate(0%, 10%);
+  }
+  
+  .model-left {
+    -webkit-transform: translate(0%, -10%);
+            transform: translate(0%, -10%);
+  }
+  
+  .hero:hover .model-right, .hero:hover .model-left {
+    -webkit-transform: translate(0%, 0%);
+            transform: translate(0%, 0%);
+  }
+  
+  .details {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  
+  .details h1 {
+    font-size: 64px;
+    letter-spacing: 0.1cm;
+  }
+  
+  .details h2 {
+    font-size: 32px;
+    padding: 20px 0px;
+  }
+  
+  .details p {
+    font-size: 16px;
+    padding: 20px 0px 50px 0px;
+  }
+  
+  .pages {
+    position: fixed;
+    right: 5%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  .pages div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  
+  .pages h3 {
+    font-size: 16px;
+    padding: 30px;
+  }
+  
+  .pages svg {
+    cursor: pointer;
+    opacity: 0.5;
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+  
+  .pages svg:hover {
+    -webkit-animation: dot 0.5s ease-in-out infinite alternate;
+            animation: dot 0.5s ease-in-out infinite alternate;
+  }
+  
+  .pages svg.active {
+    opacity: 1;
+  }
+  
+  @-webkit-keyframes dot {
+    0% {
+      -webkit-transform: scale(1.5);
+              transform: scale(1.5);
+    }
+    100% {
+      -webkit-transform: scale(2.2);
+              transform: scale(2.2);
+    }
+  }
+  
+  @keyframes dot {
+    0% {
+      -webkit-transform: scale(1.5);
+              transform: scale(1.5);
+    }
+    100% {
+      -webkit-transform: scale(2.2);
+              transform: scale(2.2);
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .page {
+      -ms-grid-columns: 5% 1fr 5%;
+          grid-template-columns: 5% 1fr 5%;
+      -ms-grid-rows: 2fr 1fr;
+          grid-template-rows: 2fr 1fr;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
+    .hero {
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 1;
+      grid-column: 2/3;
+      height: auto;
+    }
+    .hero img {
+      height: 200px;
+    }
+    .details {
+      -ms-grid-row: 2;
+      -ms-grid-row-span: 1;
+      grid-row: 2/3;
+      -ms-grid-column: 2;
+      -ms-grid-column-span: 1;
+      grid-column: 2/3;
+      text-align: center;
+    }
+    .details h1 {
+      font-size: 40px;
+      letter-spacing: 0.1cm;
+    }
+    .details h2 {
+      font-size: 25px;
+      padding: 20px 0px;
+    }
+    .details p {
+      font-size: 16px;
+      padding: 20px 0px 50px 0px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .page {
+      -ms-grid-rows: 1fr 1fr;
+          grid-template-rows: 1fr 1fr;
+    }
+    .hero img {
+      height: 200px;
+    }
+    .nav-open h3 {
+      font-size: 20px !important;
+      padding-bottom: 10px !important;
+    }
+    .nav-open p {
+      font-size: 15px !important;
+    }
+    .nav-open .social-links i {
+      font-size: 20px !important;
+    }
+    .logo, .menu {
+      font-size: 30px !important;
+    }
+  }
+  
+  .nav-open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background: repeating-linear-gradient(135deg, black, white 50%);
+    color: white;
+    display: -ms-grid;
+    display: grid;
+    z-index: 1;
+    -ms-grid-columns: 5% 1fr 1fr 5%;
+        grid-template-columns: 5% 1fr 1fr 5%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+    text-shadow: 5px 5px 10px black;
+  }
+  
+  .nav-open h3 {
+    font-size: 25px;
+    padding-bottom: 20px;
+  }
+  
+  .nav-open p {
+    font-size: 18px;
+    text-shadow: 0px 3px 5px black;
+  }
+  
+  .nav-open .social-links i {
+    padding: 20px 20px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .nav-open .social h3 {
+    color: white;
+  }
+  
+  .nav-open .contact {
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-column: 2/3;
+  }
+  
+  .logo, .menu {
+    font-size: 40px;
+    z-index: 2;
+    color: white;
+    text-shadow: 8px 8px 5px black;
+    cursor: pointer;
+  }
+  /*# sourceMappingURL=homestyle.css.map */
+</style>
+<div class="portfolio">
+  <header>
+    <nav>
+      <h1 class="logo">CLONIFY</h1>
+      <img class="menu" src="./styles/home assets/hamburger.png" alt="Menu" style="height: 15px; background-color: white; cursor: pointer;">
+
+      <div class="nav-open">
+        <div class="contact">
+          <h3>Contact</h3>
+          <p>azizsharif2000@gmail.com</p>
+          <p>stuffmukuldoes@gmail.com</p>
+        </div>
+
+        <div class="social">
+          <h3>Social</h3>
+          <div class="social-links">
+            <i class="fab fa-instagram white"></i>
+            <i class="fab fab fa-facebook white"></i>
+            <i class="fab fab fa-linkedin white"></i>
+            <i class="fab fab fa-twitter white"></i>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="page laptops">
+        <div class="details">
+          <h1>LAPTOPS</h1>
+          <h2>Apple | Asus | Dell | HP</h2>
+          <p>Top end gaming laptops, slim and light-weight laptops for professionals. And much more! </p>
+        </div>
+        <div class="hero">
+          <a href="{% url 'laptop' %}">
+            <img class="model-left" src='{% static "cloneapp/Laptop Screen left.png" %}' alt="model">
+
+            <img class="model-right" src='{% static "cloneapp/Laptop Screen right.png" %}' alt="model">
+          </a>
+        </div>
+      </section>
+
+      <section class="page headphones">
+        <div class="details">
+          
+            <h1>HEADPHONES/SPEAKERS</h1>
+            <h2>Boat | JBL | Sennheiser</h2>
+            <p>Let the bass thump in your ears. Noise cancellation at its best. Mics included. Explore... </p>
+          </a>
+        </div>
+
+        <div class="hero">
+          <a href="{% url 'speaker' %}">
+            <img class="model-left" src='{% static "cloneapp/headphones left.png" %}' alt="model">
+
+            <img class="model-right" src='{% static "cloneapp/headphones right.png" %}' alt="model">
+          </a>
+        </div>
+      </section>
+
+      <section class="page key-mouse">
+        <div class="details">
+          <h1>KEY/
+            MOUSE</h1>
+          <h2>Red-Gear | Cosmic -Byte | Logitech | Corsair</h2>
+          <p>Precision at it's best. mechanical to chiclet keyboards, whatever suits your fingers!</p>
+        </div>
+
+        <div class="hero">
+          <a href="{% url 'keyboard' %}">
+            <img class="model-left" src='{% static "cloneapp/keyboard left.png" %}' alt="model">
+
+            <img class="model-right" src='{% static "cloneapp/keyboard right.png" %}' alt="model">
+          </a>
+        </div>
+      </section>
+      <section class="page mobile-phones">
+        <div class="details">
+          <h1>SMARTPHONES</h1>
+          <h2>Samsung | Apple | Redmi | Oppo | Vivo</h2>
+          <p>Explore phones with 6/8GB Ram, 128/256 GB Storage, 6.5+ inch screen and much more...</p>
+        </div>
+
+        <div class="hero">
+          <a href="{% url 'mobile' %}">
+            <img class="model-left" src='{% static "cloneapp/headphones left.png" %}' alt="model">
+
+            <img class="model-right" src='{% static "cloneapp/headphones left.png" %}' alt="model">
+          </a>
+        </div>
+      </section>
+
+      <div class="pages">
+        <div class="page-1">
+          <h3>01</h3>
+          <svg 
+            class="slide active"
+            width="12"
+            height='12'
+            viewBox='0 0 12 12'
+            fill='none'
+            xmlns='https://www.w3.org/2000/svg'>
+
+            <circle cx='6' cy='6' r='6' fill='white' />
+          </svg>
+        </div>
+
+        <div class="page-2">
+          <h3>02</h3>
+          <svg 
+            class="slide"
+            width="12"
+            height='12'
+            viewBox='0 0 12 12'
+            fill='none'
+            xmlns='https://www.w3.org/2000/svg'>
+
+            <circle cx='6' cy='6' r='6' fill='white' />
+          </svg>
+        </div>
+
+        <div class="page-3">
+          <h3>03</h3>
+          <svg 
+            class="slide"
+            width="12"
+            height='12'
+            viewBox='0 0 12 12'
+            fill='none'
+            xmlns='https://www.w3.org/2000/svg'>
+
+            <circle cx='6' cy='6' r='6' fill='white' />
+          </svg>
+        </div>
+
+        <div class="page-4">
+          <h3>04</h3>
+          <svg 
+            class="slide"
+            width="12"
+            height='12'
+            viewBox='0 0 12 12'
+            fill='none'
+            xmlns='https://www.w3.org/2000/svg'>
+
+            <circle cx='6' cy='6' r='6' fill='white' />
+          </svg>
+        </div>
+      </div>
+    </main>
+  </header>
+</div>
+
+  <script type="text/javascript" src="{% static 'static/script.js' %}"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+{% endblock %}
+
+<!--<h1>Welcome, {{user.username}}</h1>
+<a href="{% url 'laptop' %}">Laptops</a>
+<a href="{% url 'mobile' %}">mobiles</a>
+<a href="{% url 'speaker' %}">speakers</a>
+-->

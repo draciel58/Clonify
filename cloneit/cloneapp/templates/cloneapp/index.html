@@ -1,0 +1,104 @@
+{% load static %}
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+  <title>CLONIFY</title>
+</head>
+<body>
+  <div class="cont s-signup">
+    <div class="form sign-in">
+      <h2 style='box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3), 0 10px 12px rgba(0, 0, 0, 0.22);'>SIGN IN</h2>
+      <label>
+        <span>Email Address</span>
+        <input type="email" name="email">
+      </label>
+
+      <label>
+        <span>Password</span>
+        <input type="password" name="password">
+      </label>
+
+      <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+      <button class="btn btn-primary" type="submit">Login</button>  
+      </form>
+      <p class="forgot-pass" style="font-family: 'Poppins', sans-serif;">Forgot Password ? </p>
+
+      <div class="social-media">
+        <ul>
+          <li><a href=""><i class="fab fa-instagram"></i></a>
+          </li>
+          <li><a href=""><i class="fab fa-facebook"></i></a>
+          </li>
+          <li><a href=""><i class="fab fa-twitter"></i></a>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sub-cont">
+      <div class="img" style="font-family: 'Poppins', sans-serif;">
+        <div class="img-text m-up">
+          <h2>You Lost?</h2>
+          <p>Sign Up Now And Discover An Array Of New Opportunities!</p>
+        </div>
+        <div class="img-text m-in">
+          <h2>One Of Us?</h2>
+          <p>If you already have an account<br/> Sign In. <br/>
+            We've missed you!</p>
+        </div>
+        <div class="img-btn">
+          <span class="m-up">Sign Up</span>
+          <span class="m-in">Sign In</span>
+        </div>
+      </div>
+      <div class="form sign-up">
+        <h2 style='box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.3), 0 10px 12px rgba(0, 0, 0, 0.22);'>SIGN UP</h2>
+        <label>
+          <span>{{form.usernane}}</span>
+          <input type="text" id="">
+        </label>
+        <label for="">
+          <span>Email</span>
+          <input type="text" id="">
+        </label>
+        <label for="">
+          <span>Country</span>
+          <input type="text" id="">
+        </label>
+        <label for="">
+          <span>Password</span>
+          <input type="password" id="">
+        </label>
+        <label for="">
+          <span>Confirm Password</span>
+          <input type="password" id="">
+        </label>
+        
+        <form method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+
+
+        <br>  
+        <button class="btn btn-primary" type="submit">Sign up</button>  
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+
+  <script src="https://kit.fontawesome.com/92e551cba2.js" crossorigin="anonymous">
+  </script>
+  <script type="text/javascript" 
+  src="{% static 'js/.js' %}"></script>
+</body>
+</html>
