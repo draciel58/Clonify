@@ -62,3 +62,7 @@ def mobile(request):
 def speaker(request):
 	drazil = Products.objects.filter(product='speakers')
 	return render(request,'cloneapp/speaker.html',{'speaker':drazil})
+
+def keyboard(request):
+	drazil = Products.objects.filter(product='keyboard')
+	return render(request,'cloneapp/keyboard.html',{'keyboard':drazil})

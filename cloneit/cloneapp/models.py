@@ -5,6 +5,7 @@ product_choices=(
 	('mobile','mobile'),
 	('headphone','headphone'),
 	('speakers','speakers'),
+	('keyboard', 'keyboard'),
 	)
 	
 
