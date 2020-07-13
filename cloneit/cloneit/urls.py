@@ -26,4 +26,5 @@ urlpatterns = [
     path('laptop/', views.laptop, name='laptop'),
     path('speaker/', views.speaker, name='speaker'),
     path('mobile/', views.mobile, name='mobile'),
+    path('keyboard/', views.keyboard, name='keyboard'),
 ]
