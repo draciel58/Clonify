@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Details</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/92e551cba2.js" crossorigin="anonymous"></script>
+
+
+	<style>
+	* {
+		-webkit-box-sizing: border-box;
+						box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		text-decoration: none;
+	}
+
+	*::after, *::before {
+		-webkit-box-sizing: border-box;
+						box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		font-family: 'Poppins', sans-serif;
+		font-weight: 300;
+
+	}
+	.container{
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		margin: 50px auto;
+		padding: 50px;
+		border-radius: 20px;
+		box-shadow: 0px 0px 15px rgb(145, 255, 0);
+		-webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+		text-align: center;
+	}
+	.product-name{
+		font-size: 32px;
+		padding-bottom: 50px;
+	}
+	.product-description{
+		padding: 20px;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+		font-weight: 100;
+	}
+
+	.arrow-div a i{
+		text-decoration: none;
+		margin-left: 70px;
+		margin-top: 50px;
+		color: rgb(255, 0, 106);
+		font-size: 30px;
+		cursor: pointer;
+		transition: all 0.2s ease-in;
+	}
+	.arrow-div a i:hover{
+		color: rgb(214, 8, 214);
+		transform: scale3d(1.2,1.1,1);
+	}
+
+	</style>
+</head>
+
+
+<body>
+	
+	<div class="arrow-div"> 
+		<a href="javascript:history.go(-1)"><i class="fas fa-arrow-alt-circle-left"></i></a>
+	</div>
+
+	<div class="container">
+		<h1 class="product-name">{{product.name}}</h1>
+		<h3 class="product-description">{{product.description}}</h3>
+		<h4 class="product-price">Price: {{product.price}} Rs.</h4>
+	</div>
+	
+</body>
+</html>
