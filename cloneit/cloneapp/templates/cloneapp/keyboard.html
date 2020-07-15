@@ -9,6 +9,7 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  text-decoration: none;
 }
 
 *::after, *::before {
@@ -49,9 +50,9 @@ body {
   text-align: center;
 }
 
-.laptop-subs img {
-  width: 250px;
-  height: 250px;
+.laptop-brand img {
+  width:300px;
+  object-fit: contain;
 }
 
 .laptop-brand, .laptop-subs {
@@ -63,14 +64,27 @@ body {
           justify-content: space-between;
   width: 90%;
   margin: auto;
-  padding: 80px 0px;
+  padding: 80px 0px 0px 0px;
+}
+.laptop-subs{
+  padding: 0px;
 }
 
-.brand-description h3, .subs-description h3 {
+.brand-description h3, .brand-description h3 a {
   font-size: 36px;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
+  color: rgb(197, 0, 105);
+  transition: all 0.2s ease-in;
 }
 
+.brand-description h3:hover, .brand-description h3 a:hover{ 
+  color: rgb(166, 71, 255);
+  transform: scale3d(1.1,1.1,1);
+}
+  
+.subs-description{
+  margin-top: -50px;
+}
 .brand-description p, .subs-description p {
   padding: 20px 0px;
   font-size: 20px;
@@ -106,16 +120,28 @@ body {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    padding: 30px;
   }
   .brand-description, .subs-description {
+    color: black;
+    text-decoration: none;
     width: 100%;
     text-align: center;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    -webkit-transform-origin: left;
+          transform-origin: left;
+    -webkit-transform: scaleX(1);
+          transform: scaleX(1);
   }
   .laptop-gallery {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  .subs-description{
+    margin-top: 10px;
   }
 }
 
@@ -137,8 +163,7 @@ body {
       <h3><a href="{% url 'detail' produc.id %}">{{produc.name}}</a></h3>
     </div>
     {% if produc.image.url %}
-    <img src="{{produc.image.url}}" alt="" style="width: 600px;
-    height: 300px;">
+    <img src="{{produc.image.url}}" alt="headphone image">
     {% endif %}
   </div>
   <div class="laptop-subs">
