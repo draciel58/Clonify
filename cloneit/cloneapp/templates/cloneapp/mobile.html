@@ -29,6 +29,7 @@ body {
   height: 60vh;
   width: 100%;
   position: relative;
+  
 }
 
 .banner img {
@@ -37,7 +38,7 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: top;
-     object-position: top;
+     object-position:top;
 }
 
 .company-header {
@@ -47,8 +48,11 @@ body {
   -webkit-transform: translate(-50%, -70%);
           transform: translate(-50%, -70%);
   color: white;
-  text-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
   text-align: center;
+  font-size: 25px;
+  background: linear-gradient(to bottom, rgba(212, 212, 212, 0.4),rgba(194, 194, 194, 0.4));
 }
 
 .laptop-brand img {
@@ -151,7 +155,7 @@ body {
 
 <main>
   <div class="banner">
-    <img src='{% static "cloneapp/smartphone banner.jpg" %}' alt="Laptop Photo">
+    <img src='{% static "cloneapp/smartphone banner 2.jpg" %}' alt="Mobile Photo">
 
     <div class="company-header">
       <h1>SMARTPHONES</h1>
