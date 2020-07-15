@@ -66,3 +66,8 @@ def speaker(request):
 def keyboard(request):
 	drazil = Products.objects.filter(product='keyboard')
 	return render(request,'cloneapp/keyboard.html',{'keyboard':drazil})
+
+@login_required
+def detail(request,product_id):
+	drazil = Products.objects.get(pk=product_id)
+	return render(request,'cloneapp/detail.html',{'product':drazil})

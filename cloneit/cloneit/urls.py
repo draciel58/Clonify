@@ -29,6 +29,7 @@ urlpatterns = [
     path('speaker/', views.speaker, name='speaker'),
     path('mobile/', views.mobile, name='mobile'),
     path('keyboard/', views.keyboard, name='keyboard'),
+    path('detail/<int:product_id>', views.detail, name='detail')
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

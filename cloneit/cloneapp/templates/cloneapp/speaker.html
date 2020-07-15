@@ -129,20 +129,22 @@ body {
       <h2>Boat | JBL | Sennheiser</h2>
     </div>
   </div>
-  {% for speaker in speaker %}
+  {% for produc in speaker %}
   <div class="laptop-brand">
     <div class="brand-description">
-      <h3>{{speaker.name}}</h3>
+      <h3><a href="{% url 'detail' produc.id %}">{{produc.name}}</a></h3>
     </div>
-    <img src="{{speaker.image.url}}"alt="" style="width: 300px;
+    {% if produc.image.url %}
+    <img src="{{produc.image.url}}" alt="" style="width: 600px;
     height: 300px;">
+    {% endif %}
   </div>
   <div class="laptop-subs">
     <div class="subs-description">
       <h3>Product Description</h3>
-      <p>{{speaker.description}}</p>
+      <p>{{produc.short_description}}</p>
       <h2>Price</h2>
-      <h4>{{speaker.price}}</h4>
+      <h4>{{produc.price}}</h4>
     </div>
     <div class="laptop-gallery">
       <img src="./home assets/Laptops page main.jpg" alt="">
