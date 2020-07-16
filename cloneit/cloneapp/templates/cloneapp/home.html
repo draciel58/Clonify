@@ -110,70 +110,7 @@
     font-size: 16px;
     padding: 20px 0px 50px 0px;
   }
-  
-  .pages {
-    position: fixed;
-    right: 5%;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  }
-  
-  .pages div {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  
-  .pages h3 {
-    font-size: 16px;
-    padding: 30px;
-  }
-  
-  .pages svg {
-    cursor: pointer;
-    opacity: 0.5;
-    -webkit-transform: scale(1.5);
-            transform: scale(1.5);
-  }
-  
-  .pages svg:hover {
-    -webkit-animation: dot 0.5s ease-in-out infinite alternate;
-            animation: dot 0.5s ease-in-out infinite alternate;
-  }
-  
-  .pages svg.active {
-    opacity: 1;
-  }
-  
-  @-webkit-keyframes dot {
-    0% {
-      -webkit-transform: scale(1.5);
-              transform: scale(1.5);
-    }
-    100% {
-      -webkit-transform: scale(2.2);
-              transform: scale(2.2);
-    }
-  }
-  
-  @keyframes dot {
-    0% {
-      -webkit-transform: scale(1.5);
-              transform: scale(1.5);
-    }
-    100% {
-      -webkit-transform: scale(2.2);
-              transform: scale(2.2);
-    }
-  }
+ 
   
   @media (max-width: 1024px) {
     .page {
@@ -228,140 +165,86 @@
     
   }/*# sourceMappingURL=homestyle.css.map */
 </style>
-
+<div id="progressbar"></div>
+<div id="scrollPath"></div>
 <div class="portfolio">
-  <header>
-    <main>
-      <section class="page laptops">
-        <div class="details">
-          <h1>LAPTOPS</h1>
-          <h2>Apple | Asus | Dell | HP</h2>
-          <p>Top end gaming laptops, slim and light-weight laptops for professionals. And much more! </p>
-        </div>
-        <div class="hero">
-          <a href="{% url 'laptop' %}">
-            <img class="model-left" src='{% static "cloneapp/Laptop Screen left.png" %}' alt="model">
+  <section class="page laptops">
+    <div class="details">
+      <h1>LAPTOPS</h1>
+      <h2>Apple | Asus | Dell | HP</h2>
+      <p>Top end gaming laptops, slim and light-weight laptops for professionals. And much more! </p>
+    </div>
+    <div class="hero">
+      <a href="{% url 'laptop' %}">
+        <img class="model-left" src='{% static "cloneapp/Laptop Screen left.png" %}' alt="model">
 
-            <img class="model-right" src='{% static "cloneapp/Laptop Screen right.png" %}' alt="model">
-          </a>
-        </div>
-      </section>
+        <img class="model-right" src='{% static "cloneapp/Laptop Screen right.png" %}' alt="model">
+      </a>
+    </div>
+  </section>
 
-      <section class="page headphones">
-        <div class="details">
-          
-            <h1>HEADPHONES/<br/>SPEAKERS</h1>
-            <h2>Boat | JBL | Sennheiser</h2>
-            <p>Let the bass thump in your ears. Noise cancellation at its best. Mics included. Explore... </p>
-          </a>
-        </div>
+  <section class="page headphones">
+    <div class="details">
+      
+        <h1>HEADPHONES/<br/>SPEAKERS</h1>
+        <h2>Boat | JBL | Sennheiser</h2>
+        <p>Let the bass thump in your ears. Noise cancellation at its best. Mics included. Explore... </p>
+      </a>
+    </div>
 
-        <div class="hero">
-          <a href="{% url 'speaker' %}">
-            <img class="model-left" src='{% static "cloneapp/headphones left.png" %}' alt="model">
+    <div class="hero">
+      <a href="{% url 'speaker' %}">
+        <img class="model-left" src='{% static "cloneapp/headphones left.png" %}' alt="model">
 
-            <img class="model-right" src='{% static "cloneapp/headphones right.png" %}' alt="model">
-          </a>
-        </div>
-      </section>
+        <img class="model-right" src='{% static "cloneapp/headphones right.png" %}' alt="model">
+      </a>
+    </div>
+  </section>
 
-      <section class="page key-mouse">
-        <div class="details">
-          <h1>KEYS/<br />
-            MOUSE</h1>
-          <h2>Red-Gear | Cosmic -Byte | Logitech | Corsair</h2>
-          <p>Precision at it's best. mechanical to chiclet keyboards, whatever suits your fingers!</p>
-        </div>
+  <section class="page key-mouse">
+    <div class="details">
+      <h1>KEYS/<br />
+        MOUSE</h1>
+      <h2>Red-Gear | Cosmic -Byte | Logitech | Corsair</h2>
+      <p>Precision at it's best. mechanical to chiclet keyboards, whatever suits your fingers!</p>
+    </div>
 
-        <div class="hero">
-          <a href="{% url 'keyboard' %}">
-            <img class="model-left" src='{% static "cloneapp/keyboard left.png" %}' alt="model">
+    <div class="hero">
+      <a href="{% url 'keyboard' %}">
+        <img class="model-left" src='{% static "cloneapp/keyboard left.png" %}' alt="model">
 
-            <img class="model-right" src='{% static "cloneapp/keyboard right.png" %}' alt="model">
-          </a>
-        </div>
-      </section>
-      <section class="page mobile-phones">
-        <div class="details">
-          <h1>SMARTPHONES</h1>
-          <h2>Samsung | Apple | Redmi | Oppo | Vivo</h2>
-          <p>Explore phones with 6/8GB Ram, 128/256 GB Storage, 6.5+ inch screen and much more...</p>
-        </div>
+        <img class="model-right" src='{% static "cloneapp/keyboard right.png" %}' alt="model">
+      </a>
+    </div>
+  </section>
+  <section class="page mobile-phones">
+    <div class="details">
+      <h1>SMARTPHONES</h1>
+      <h2>Samsung | Apple | Redmi | Oppo | Vivo</h2>
+      <p>Explore phones with 6/8GB Ram, 128/256 GB Storage, 6.5+ inch screen and much more...</p>
+    </div>
 
-        <div class="hero">
-          <a href="{% url 'mobile' %}">
-            <img class="model-left" src='{% static "cloneapp/mobile left.png" %}' alt="model">
+    <div class="hero">
+      <a href="{% url 'mobile' %}">
+        <img class="model-left" src='{% static "cloneapp/mobile left.png" %}' alt="model">
 
-            <img class="model-right" src='{% static "cloneapp/mobile right.png" %}' alt="model">
-          </a>
-        </div>
-      </section>
-
-      <div class="pages">
-        <div class="page-1">
-          <h3>01</h3>
-          <svg 
-            class="slide active"
-            width="12"
-            height='12'
-            viewBox='0 0 12 12'
-            fill='none'
-            xmlns='https://www.w3.org/2000/svg'>
-
-            <circle cx='6' cy='6' r='6' fill='white' />
-          </svg>
-        </div>
-
-        <div class="page-2">
-          <h3>02</h3>
-          <svg 
-            class="slide"
-            width="12"
-            height='12'
-            viewBox='0 0 12 12'
-            fill='none'
-            xmlns='https://www.w3.org/2000/svg'>
-
-            <circle cx='6' cy='6' r='6' fill='white' />
-          </svg>
-        </div>
-
-        <div class="page-3">
-          <h3>03</h3>
-          <svg 
-            class="slide"
-            width="12"
-            height='12'
-            viewBox='0 0 12 12'
-            fill='none'
-            xmlns='https://www.w3.org/2000/svg'>
-
-            <circle cx='6' cy='6' r='6' fill='white' />
-          </svg>
-        </div>
-
-        <div class="page-4">
-          <h3>04</h3>
-          <svg 
-            class="slide"
-            width="12"
-            height='12'
-            viewBox='0 0 12 12'
-            fill='none'
-            xmlns='https://www.w3.org/2000/svg'>
-
-            <circle cx='6' cy='6' r='6' fill='white' />
-          </svg>
-        </div>
-      </div>
-    </main>
-  </header>
+        <img class="model-right" src='{% static "cloneapp/mobile right.png" %}' alt="model">
+      </a>
+    </div>
+  </section>
 </div>
 
   <script type="text/javascript" src="{% static 'static/script.js' %}"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script>
+    let progress = document.getElementById('progressbar');
+    let totalheight = document.body.scrollHeight - window.innerHeight;
+    window.onscroll = function(){
+      let progressHeight = (window.pageYOffset / totalheight)* 100;
+      progress.style.height = progressHeight + "%";
+    }
+  </script>
 {% endblock %}
 
 <!--<h1>Welcome, {{user.username}}</h1>

@@ -24,6 +24,56 @@
       text-decoration: none;
       color: white;
     }
+    ::-webkit-scrollbar{
+      display: none;
+    }
+    #scrollPath{
+      position: fixed;
+      top: 10vh;
+      right: 0;
+      width: 12px;
+      height: 90%;
+      background: rgba(255, 255, 255, 0);
+    }
+    #progressbar{
+      position: fixed;
+      top: 10vh;
+      right: 0px;
+      width: 12px;
+      background: linear-gradient(to top, #008aff,#00ffe7);
+      animation: animate 5s linear infinite;
+    }
+    
+    @keyframes animate{
+      
+      0%, 100%{
+        filter: hue-rotate(0deg);
+      }
+      50%{
+        filter: hue-rotate(360deg);
+      }
+    }
+
+    #progressbar::before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; 
+      height: 100%;
+      background: linear-gradient(to top, #008aff,#00ffe7);
+      filter: blur(10px);  
+    }
+    #progressbar::after{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, #008aff,#00ffe7);
+      filter: blur(30px);  
+    }
 
     nav {
       position: fixed;
@@ -80,6 +130,18 @@
     }
     .logo, .menu {
       font-size: 30px !important;
+    }
+    #scrollPath{
+      top: 0;
+      background: rgba(255, 255, 255, 0);
+    }
+    #progressbar{
+      top: 0;
+      background: linear-gradient(to top, #008aff,#00ffe7);
+      animation: animate 5s linear infinite;
+    }
+    #progressbar::before{
+      top: 0;
     }
   }
   
@@ -141,7 +203,8 @@
   </style>
 </head>
  <body>
-  
+  <div id="progressbar"></div>
+  <div id="scrollPath"></div>
   <nav>
     <h1 class="logo">CLONIFY</h1>
     <div class="menu"> + </div>
@@ -192,7 +255,8 @@
         });
       });
     });
-
+  </script>
+  <script>
     const text= document.querySelector(".logo");
     const strText = text.textContent;
     const splitText = strText.split("");
@@ -201,25 +265,31 @@
       text.innerHTML += "<span>" + splitText[i] + "</span>";
     }
 
-     let char = 0;
-     let timer = setInterval(onTick, 50);
+    let char = 0;
+    let timer = setInterval(onTick, 50);
 
-     function onTick(){
-       const span = text.querySelectorAll('span')[char];
-       span.classList.add('fade');
-       char++;
-       if(char === splitText.length){
-         complete();
-         return;
-       }
-     }
+    function onTick(){
+      const span = text.querySelectorAll('span')[char];
+      span.classList.add('fade');
+      char++;
+      if(char === splitText.length){
+        complete();
+        return;
+      }
+    }
 
-     function complete(){
-       clearInterval(timer);
-       timer = null;
-     }
-/**/
+    function complete(){
+      clearInterval(timer);
+      timer = null;
+    }
   </script>
-
+  <script>
+    let progress = document.getElementById('progressbar');
+    let totalheight = document.body.scrollHeight - window.innerHeight;
+    window.onscroll = function(){
+      let progressHeight = (window.pageYOffset / totalheight)* 100;
+      progress.style.height = progressHeight + "%";
+    }
+  </script>
 </body>
 </html>

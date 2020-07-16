@@ -10,149 +10,151 @@
   margin: 0;
   list-style: none;
   text-decoration: none;
-}
+  }
 
-*::after, *::before {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  *::after, *::before {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
-}
+  body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+  }
 
-.banner {
-  height: 60vh;
-  width: 100%;
-  position: relative;
-  
-}
-
-.banner img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
-}
-
-.company-header {
-  position: absolute;
-  top: 70%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -70%);
-          transform: translate(-50%, -70%);
-  color: white;
-  padding: 10px;
-  text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  text-align: center;
-  font-size: 25px;
-  background: linear-gradient(to bottom, rgba(179, 179, 180, 0.2),rgba(165, 165, 165, 0.2));
-}
-
-.laptop-brand img {
-  width:300px;
-  object-fit: contain;
-}
-
-.laptop-brand, .laptop-subs {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 90%;
-  margin: auto;
-  padding: 80px 0px 0px 0px;
-}
-.laptop-subs{
-  padding: 0px;
-}
-
-.brand-description h3, .brand-description h3 a {
-  font-size: 36px;
-  padding-bottom: 10px;
-  color: rgb(197, 0, 105);
-  transition: all 0.2s ease-in;
-}
-
-.brand-description h3:hover, .brand-description h3 a:hover{ 
-  color: rgb(166, 71, 255);
-  transform: scale3d(1.1,1.1,1);
-}
-  
-.subs-description{
-  margin-top: -50px;
-}
-.brand-description p, .subs-description p {
-  padding: 20px 0px;
-  font-size: 20px;
-}
-
-.laptop-gallery {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (250px);
-      grid-template-columns: repeat(3, 250px);
-}
-
-.laptop-gallery img {
-  padding: 5px;
-}
-
-
-@media (max-width: 1024px) {
   .banner {
-    height: 40vh;
-  }
-  .laptop-brand {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .laptop-subs {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 30px;
-  }
-  .brand-description, .subs-description {
-    color: black;
-    text-decoration: none;
+    height: 60vh;
     width: 100%;
-    text-align: center;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    -webkit-transform-origin: left;
-          transform-origin: left;
-    -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+    position: relative;
+    
   }
+
+  .banner img {
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+      object-fit: cover;
+    -o-object-position: top;
+      object-position: top;
+  }
+
+  .company-header {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -70%);
+            transform: translate(-50%, -70%);
+    color: white;
+    padding: 10px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    font-size: 25px;
+    background: linear-gradient(to bottom, rgba(179, 179, 180, 0.2),rgba(165, 165, 165, 0.2));
+  }
+
+  .laptop-brand img {
+    width:300px;
+    object-fit: contain;
+  }
+
+  .laptop-brand, .laptop-subs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    width: 90%;
+    margin: auto;
+    padding: 80px 0px 0px 0px;
+  }
+  .laptop-subs{
+    padding: 0px;
+  }
+
+  .brand-description h3, .brand-description h3 a {
+    font-size: 36px;
+    padding-bottom: 10px;
+    color: rgb(197, 0, 105);
+    transition: all 0.2s ease-in;
+  }
+
+  .brand-description h3:hover, .brand-description h3 a:hover{ 
+    color: rgb(166, 71, 255);
+    transform: scale3d(1.1,1.1,1);
+  }
+    
+  .subs-description{
+    margin-top: -50px;
+  }
+  .brand-description p, .subs-description p {
+    padding: 20px 0px;
+    font-size: 20px;
+  }
+
   .laptop-gallery {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    -ms-grid-columns: (250px);
+        grid-template-columns: repeat(3, 250px);
   }
-  .subs-description{
-    margin-top: 10px;
+
+  .laptop-gallery img {
+    padding: 5px;
   }
-}
+
+
+  @media (max-width: 1024px) {
+    .banner {
+      height: 40vh;
+    }
+    .laptop-brand {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
+    .laptop-subs {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      padding: 30px;
+    }
+    .brand-description, .subs-description {
+      color: black;
+      text-decoration: none;
+      width: 100%;
+      text-align: center;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      -webkit-transform-origin: left;
+            transform-origin: left;
+      -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    }
+    .laptop-gallery {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .subs-description{
+      margin-top: 10px;
+    }
+  }
 
 /*# sourceMappingURL=laptopstyle.css.map */
 </style>
 
 <main>
+  <div id="progressbar"></div>
+  <div id="scrollPath"></div>
   <div class="banner">
     <img src='{% static "cloneapp/Laptops page main 2.jpg" %}' alt="Laptop Photo">
 
@@ -189,9 +191,7 @@ body {
   {% endfor %}
   
 </main>
-<script>
 
-</script>
 <!--
 {% for laptop in laptop %}
 
