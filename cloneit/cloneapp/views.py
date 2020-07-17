@@ -5,7 +5,7 @@ from .form import RegisterForm,SigninForm
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Products
+from .models import Products,Cartitem
 
 @login_required
 def home(request):
@@ -71,3 +71,40 @@ def keyboard(request):
 def detail(request,product_id):
 	drazil = Products.objects.get(pk=product_id)
 	return render(request,'cloneapp/detail.html',{'product':drazil})
+
+
+@login_required
+def add_to_cart(request):
+	if request.method=='GET':
+		all_products=Cartitem.objects.filter(user=request.user)
+		return render(request,'cloneapp/cart.html',{'product':all_products})
+	else:
+		raven = Cartitem.objects.filter(user=request.user,item=request.POST['name'])
+		if raven.exists():
+			b = Cartitem.objects.get(user=request.user,item=request.POST['name'])
+			b.quantity+=1
+			b.save()
+			return redirect('home')
+		else:
+			a=Cartitem.objects.create(user=request.user,item=request.POST['name'],quantity=1)
+			a.save()
+			return redirect('home')
+
+@login_required
+def cart_increment(request):
+	if request.method=='POST':
+		all_products=Cartitem.objects.get(user=request.user,item=request.POST['add'])
+		all_products.quantity+=1
+		all_products.save()
+		return redirect('cart')
+
+@login_required
+def cart_decrement(request):
+	if request.method=='POST':
+		all_products=Cartitem.objects.get(user=request.user,item=request.POST['delete'])
+		all_products.quantity-=1
+		all_products.save()
+		if all_products.quantity==0:
+			all_products.delete()
+
+		return redirect('cart')		
