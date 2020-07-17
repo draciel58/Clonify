@@ -29,7 +29,10 @@ urlpatterns = [
     path('speaker/', views.speaker, name='speaker'),
     path('mobile/', views.mobile, name='mobile'),
     path('keyboard/', views.keyboard, name='keyboard'),
-    path('detail/<int:product_id>', views.detail, name='detail')
+    path('detail/<int:product_id>', views.detail, name='detail'),
+    path('cart/',views.add_to_cart,name='cart'),
+    path('cart_increment/',views.cart_increment,name='cart_increment'),
+    path('cart_decrement/',views.cart_decrement,name='cart_decrement'),
 ]
 
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
