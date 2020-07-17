@@ -32,8 +32,8 @@
     min-height: 90vh;
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 5% 1fr 1fr 1fr 5%;
-        grid-template-columns: 5% 1fr 1fr 1fr 5%;
+    -ms-grid-columns: 5% 1fr 1fr 5%;
+        grid-template-columns: 5% 1fr 1fr 5%;
   }
   
   .page .headphones, .page .key-mouse {
@@ -162,8 +162,8 @@
     .hero img {
       height: 200px;
     }
-    
-  }/*# sourceMappingURL=homestyle.css.map */
+  }
+
 </style>
 <div id="progressbar"></div>
 <div id="scrollPath"></div>
@@ -237,14 +237,7 @@
   <script type="text/javascript" src="{% static 'static/script.js' %}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script>
-    let progress = document.getElementById('progressbar');
-    let totalheight = document.body.scrollHeight - window.innerHeight;
-    window.onscroll = function(){
-      let progressHeight = (window.pageYOffset / totalheight)* 100;
-      progress.style.height = progressHeight + "%";
-    }
-  </script>
+
 {% endblock %}
 
 <!--<h1>Welcome, {{user.username}}</h1>

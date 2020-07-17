@@ -1,5 +1,7 @@
 {% extends 'cloneapp/base.html' %}
 {% block main_content %}
+{% load static %}
+
 <style>
 	*{
 		list-style: none;
@@ -8,67 +10,83 @@
 		box-sizing: border-box;
 	}
 	
-	.nav-link{
-      color: white;
+	.nav-link{ 
+      color: black;
 		}
-	.container{
-		display: flex;
-		flex-direction: column;
-		width: 50%;
-		margin: 0 auto;
-		padding: 50px;
-		box-shadow: 0px 0px 10px black;
-		border-radius: 20px;
-	}
+	
 	.btn-primary{
-		border-color: transparent !important;
+		border: transparent !important;
 	}
 
 	.signup-button{
 		margin-top: 40px;
 		width:60%;
-		background:linear-gradient(to right,white, black) ;
+		background:linear-gradient(to right,white, rgb(87, 7, 235)) ;
 		color: white;
-		text-shadow: 5px 5px 5px black;
 	}
 	.signup-button:hover{
-		background:linear-gradient(to right,aquamarine, white) ;
-		color: black;
-		text-shadow: 0px 3px 3px aqua;
-		
+		background:linear-gradient(to right,rgb(87, 7, 235), white) ;
+		color: white;
 	}
 	.already-last-line{
-		margin-top: 50px;
-		color: white;
+		margin-top: 20px;
+		color: rgb(83, 81, 81);
 	}
 	.already-last-line a{
-		color: rgb(39, 241, 197);
+		color: rgb(87, 7, 235);
 	}
-	.login-form-header{
-		color: white;
-		font-weight: bold;
-		text-shadow: 0px 8px 10px black;
-		text-align: center;
-		margin-bottom: 30px;
+
+
+/* ////////////////////////////////////////// */
+
+	.wave{
+		position: fixed;
+		height: 90%;
+		left: 0; bottom: 0;
+		z-index: -1;
+	}
+	.container{
+		display: flex;
+		flex-direction: column;
+		width: 100vw;
+		justify-content: space-between;
+		padding: 0;
+	}
+	.img{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.img img{
+		width: 100px;
+	}	
+	.signup-container{
+		display: flex;
+		flex-direction: column;
+		margin-left: auto;
 	}
 
 </style>
 
+<img class="wave" src='{% static "cloneapp/login base image purple.svg" %}' alt="">
 <div class="container">
-	<h1 class="login-form-header">LOG IN</h1>
-	<div class="form-group">
-		<form method="POST">
-			{% csrf_token %}
-			{{form.as_p}}	
-		
-			<button class="btn btn-primary signup-button" type="submit">Login</button>	
-		</form>
+	<div class="img">
+		<img src='{% static "cloneapp/profile avatar purple.svg" %}' alt="">
 	</div>
-
-	<h6 class='already-last-line'>
-		Create an account? 
-		<a href="{% url 'signupuser' %}">Sign Up</a>
-	</h6>
+	<div class="signup-container">
+		<div class="form-group">
+			<form method="POST">
+				{% csrf_token %}
+				{{form.as_p}}	
+			
+				<button class="btn btn-primary signup-button" type="submit">Login</button>	
+			</form>
+			<h6 class='already-last-line'>
+				Create an account? 
+				<a href="{% url 'signupuser' %}">Sign Up</a>
+			</h6>
+		</div>
+	</div>
 </div>
 
 {% endblock %}

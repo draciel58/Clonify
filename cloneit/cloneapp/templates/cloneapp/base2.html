@@ -15,21 +15,32 @@
     footer {
        display: flex;
        padding: 20px;
-       background-color: rgb(0, 0, 0);
-       color: rgb(255, 255, 255);
+       background: rgb(46, 45, 45);
        text-align: center;
        justify-content: center;
+       justify-content: space-evenly;
+       
     }
-    .back-to-home {
+    .back-to-home, .back-to-previous, .back-to-next{
+      font-size: 20px;
       text-decoration: none;
-      color: white;
+      color: rgb(255, 255, 255);
+    }
+    .home-button{
+      font-size: 25px;
+      text-decoration: none;
+      color: rgb(80, 38, 14);
+    }
+    ::selection{
+      background: rgba(241, 137, 255, 0.685);
+      color: rgba(255, 255, 255, 0.712);
     }
     ::-webkit-scrollbar{
-      width: 0px;
+      display: none;
     }
     #scrollPath{
       position: fixed;
-      top: 10vh;
+      top: 0vh;
       right: 10px;
       width: 12px;
       height: 90%;
@@ -37,7 +48,7 @@
     }
     #progressbar{
       position: fixed;
-      top: 10vh;
+      top: 0vh;
       right: 10px;
       width: 12px;
       background: linear-gradient(to top, #008aff,#00ffe7);
@@ -196,7 +207,7 @@
     span.fade{
       opacity: 1;
       transform: translateY(0px);
-      color:rgb(190, 17, 84);
+      color:rgb(175, 11, 74);
     }
 
 
@@ -206,6 +217,7 @@
   <div id="progressbar"></div>
   <div id="scrollPath"></div>
   <nav>
+    <a class="home-button" href="{% url 'home' %}"><i class="fas fa-home"></i></a>
     <h1 class="logo">CLONIFY</h1>
     <div class="menu"> + </div>
 
@@ -233,8 +245,15 @@
   {% endblock %}	
    
   <footer class="container-fluid footer">
-     <div class=""> 
+    <div class=""> 
+      <a class="back-to-previous"href="javascript:history.go(-1)">Previous Page</a>
+    </div>
+    <div class=""> 
        <a class="back-to-home"href="{% url 'home' %}">Back To Home</a>
+    </div>
+    
+    <div class=""> 
+      <a class="back-to-next"href="javascript:history.go(1)">Next Page</a>
     </div>
   </footer>
   

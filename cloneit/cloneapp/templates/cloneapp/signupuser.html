@@ -1,5 +1,6 @@
 {% extends 'cloneapp/base.html' %}
 {% block main_content %}
+{% load static %}
 
 <style>
 	*{
@@ -10,64 +11,85 @@
 	}
 	
 	.nav-link{
-      color: white;
+      color: black;
 		}
-	.container{
-		display: flex;
-		flex-direction: column;
-		width: 50%;
-		margin: 0 auto;
-		padding: 50px;
-		border-radius: 20px;
-		box-shadow: 0px 0px 15px black;
-	}
+	
 	.btn-primary{
-		border-color: transparent !important;
+		border: transparent !important;
 	}
 
 	.signup-button{
 		margin-top: 40px;
 		width:60%;
-		background:linear-gradient(to right,white, black) ;
-		color: white;
-		text-shadow: 0px 5px 5px black;
+		background:linear-gradient(to right,white, aquamarine) ;
+		color: black;
 	}
 	.signup-button:hover{
 		background:linear-gradient(to right,aquamarine, white) ;
 		color: black;
-		text-shadow: 0px 3px 3px aqua;
 	}
 	.already-last-line{
 		margin-top: 20px;
-		color: white;
+		color: rgb(83, 81, 81);
 	}
 	.already-last-line a{
-		color: rgb(39, 241, 197);
+		color: rgb(31, 146, 121);
 	}
-	.signup-form-header{
-		color: white;
-		font-weight: bold;
-		text-shadow: 0px 8px 10px black;
-		text-align: center;
+
+
+/* ////////////////////////////////////////// */
+
+	.wave{
+		position: fixed;
+		height: 90%;
+		left: 0; bottom: 0;
+		z-index: -1;
 	}
+	.container{
+		display: flex;
+		flex-direction: column;
+		width: 100vw;
+		justify-content: space-between;
+		padding: 0;
+	}
+	.img{
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+	.img img{
+		width: 100px;
+	}	
+	.signup-container{
+		display: flex;
+		flex-direction: column;
+		margin-left: auto;
+	}
+
+
+
 
 </style>
 
+<img class="wave" src='{% static "cloneapp/login base image green.svg" %}' alt="">
 <div class="container">
-	<h1 class="signup-form-header">SIGN UP</h1>
-	<div class="form-group">
-		<form method="POST">
-			{% csrf_token %}
-			{{form.as_p}}
-
-			<button class="btn btn-primary signup-button" type="submit">Sign up</button>	
-		</form>
+	<div class="img">
+		<img src='{% static "cloneapp/profile avatar green.svg" %}' alt="">
 	</div>
-		
-	<h6 class='already-last-line'>
-		Already have an account? 
-		<a href="{% url 'loginuser' %}">Login</a>
-	</h6>
+	<div class="signup-container">
+		<div class="form-group">
+			<form method="POST">
+				{% csrf_token %}
+				{{form.as_p}}
+
+				<button class="btn btn-primary signup-button" type="submit">Sign up</button>	
+			</form>
+			<h6 class='already-last-line'>
+				Already have an account? 
+				<a href="{% url 'loginuser' %}">Login</a>
+			</h6>
+		</div>
+	</div>
 </div>
 
 {% endblock %}
