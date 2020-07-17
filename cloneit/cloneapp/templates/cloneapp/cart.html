@@ -1,0 +1,16 @@
+{% for i in product %}
+<a>{{i.item}}</a>
+<form method="POST" action='{% url "cart_increment" %}'>
+        {% csrf_token %}
+        <input type="hidden" value="{{i.item}}" name="add">
+        <button type='submit'>+</button>
+      </form>
+<p>{{i.quantity}}</p>
+<form method="POST" action='{% url "cart_decrement" %}'>
+        {% csrf_token %}
+        <input type="hidden" value="{{i.item}}" name="delete">
+        <button type='submit'>-</button>
+      </form>
+  
+{% endfor %}
+<a href="{% url 'home' %}">home</a>
