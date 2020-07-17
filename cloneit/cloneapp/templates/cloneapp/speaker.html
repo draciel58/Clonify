@@ -167,6 +167,11 @@ body {
   <div class="laptop-brand">
     <div class="brand-description">
       <h3><a href="{% url 'detail' produc.id %}">{{produc.name}}</a></h3>
+      <form method="POST" action='{% url "cart" %}'>
+        {% csrf_token %}
+        <input type="hidden" name="name" value="{{produc.name}}">
+        <button type='submit'>Add to cart</button>
+      </form>
     </div>
     {% if produc.image.url %}
     <img src="{{produc.image.url}}" alt="" style="width: 600px;
