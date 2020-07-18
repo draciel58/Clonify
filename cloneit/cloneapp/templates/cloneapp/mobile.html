@@ -183,6 +183,7 @@ body {
       <form method="POST" action='{% url "cart" %}'>
         {% csrf_token %}
         <input type="hidden" name="name" value="{{produc.name}}">
+        <input type="hidden" name="price" value="{{produc.price}}">
         <button type='submit' class='add-to-cart'>Add to cart</button>
       </form>
     </div>
