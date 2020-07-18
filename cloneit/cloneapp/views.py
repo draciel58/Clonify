@@ -76,17 +76,26 @@ def detail(request,product_id):
 @login_required
 def add_to_cart(request):
 	if request.method=='GET':
+		total_price=0
 		all_products=Cartitem.objects.filter(user=request.user)
-		return render(request,'cloneapp/cart.html',{'product':all_products})
+		for i in all_products:
+			total_price+=i.total
+		return render(request,'cloneapp/cart.html',{'product':all_products,'total_price':total_price})
 	else:
+		total_price=0
 		raven = Cartitem.objects.filter(user=request.user,item=request.POST['name'])
 		if raven.exists():
-			b = Cartitem.objects.get(user=request.user,item=request.POST['name'])
+			b = Cartitem.objects.get(user=request.user,item=request.POST['name'],price=request.POST['price'])
 			b.quantity+=1
+			b.total=b.price*b.quantity
 			b.save()
+			a=Cartitem.objects.filter(user=request.user)
+			for i in a:
+				total_price+=i.total
 			return redirect('home')
 		else:
-			a=Cartitem.objects.create(user=request.user,item=request.POST['name'],quantity=1)
+			a=Cartitem.objects.create(user=request.user,item=request.POST['name'],quantity=1,price=request.POST['price'])
+			a.total=a.price*a.quantity
 			a.save()
 			return redirect('home')
 
@@ -95,6 +104,7 @@ def cart_increment(request):
 	if request.method=='POST':
 		all_products=Cartitem.objects.get(user=request.user,item=request.POST['add'])
 		all_products.quantity+=1
+		all_products.total=all_products.price*all_products.quantity
 		all_products.save()
 		return redirect('cart')
 
@@ -103,8 +113,16 @@ def cart_decrement(request):
 	if request.method=='POST':
 		all_products=Cartitem.objects.get(user=request.user,item=request.POST['delete'])
 		all_products.quantity-=1
+		all_products.total=all_products.price*all_products.quantity
 		all_products.save()
 		if all_products.quantity==0:
 			all_products.delete()
+		return redirect('cart')
 
-		return redirect('cart')		
+@login_required
+def cart_delete(request):
+	if request.method=='POST':
+		all_products=Cartitem.objects.get(user=request.user,item=request.POST['trash'])
+		all_products.delete()
+		return redirect('cart')	
+
