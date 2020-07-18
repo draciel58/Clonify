@@ -167,11 +167,6 @@
   <div class="laptop-brand">
     <div class="brand-description">
       <h3><a href="{% url 'detail' produc.id %}">{{produc.name}}</a></h3>
-      <form method="POST" action='{% url "cart" %}'>
-        {% csrf_token %}
-        <input type="hidden" name="name" value="{{produc.name}}">
-        <button type='submit'>Add to cart</button>
-      </form>
     </div>
     {% if produc.image.url %}
     <img src="{{produc.image.url}}" alt="Zenbook Image">
@@ -183,7 +178,14 @@
       <p>{{produc.short_description}}</p>
       <h2>Price</h2>
       <h4>{{produc.price}}</h4>
+    
+      <form method="POST" action='{% url "cart" %}'>
+        {% csrf_token %}
+        <input type="hidden" name="name" value="{{produc.name}}">
+        <button type='submit' class='add-to-cart'>Add to cart</button>
+      </form>
     </div>
+    
     <div class="laptop-gallery">
       <img src="./home assets/Laptops page main.jpg" alt="">
       <img src="./home assets/Laptops page main.jpg" alt="">
@@ -192,6 +194,7 @@
       <img src="./home assets/Laptops page main.jpg" alt="">
       <img src="./home assets/Laptops page main.jpg" alt="">
     </div>
+
   </div>
   {% endfor %}
   

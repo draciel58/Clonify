@@ -1,16 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cart</title>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/92e551cba2.js" crossorigin="anonymous"></script>
+
+
+<style>
+  * {
+		-webkit-box-sizing: border-box;
+						box-sizing: border-box;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		text-decoration: none;
+	}
+
+	*::after, *::before {
+		-webkit-box-sizing: border-box;
+						box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		font-family: 'Poppins', sans-serif;
+		font-weight: 300;
+    background-color: white;
+
+	}
+  .container{
+    background-color: white;
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+		margin: 50px auto;
+		padding: 30px 50px;
+		border-radius: 20px;
+		box-shadow: 0px 0px 15px rgb(123, 255, 0);
+		-webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+		text-align: center;
+	}
+  .plus-button, .minus-button{
+    color: rgb(73, 73, 73);
+    font-size: 20px;
+  }
+  button{
+    background: transparent;
+    border: none;
+    outline:none;
+    display: inline-block;
+    transition: all 0.2s ;
+    cursor: pointer;
+  }
+  button:hover{
+    transform: scale3d(1.2,1.2,1);
+  }
+
+  .plus-minus-wrapper{
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+  }
+  .item-heading{
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+
+  .arrow-div a i{
+    position: fixed;
+		text-decoration: none;
+		margin-left: 70px;
+		margin-top: 50px;
+		color: rgb(255, 0, 106);
+		font-size: 30px;
+		cursor: pointer;
+		transition: all 0.2s ease-in;
+	}
+	.arrow-div a i:hover{
+		color: rgb(255, 0, 106);
+		transform: scale3d(1.2,1.1,1);
+	}
+
+  .dustbin{
+    color: rgb(255, 0, 106);
+    margin-top: 20px;
+    font-size: 20px;
+
+  }
+</style>
+<div class="arrow-div"> 
+  <a href="{% url 'home' %}"><i class="fas fa-arrow-alt-circle-left"></i></a>
+</div>
+
 {% for i in product %}
-<a>{{i.item}}</a>
-<form method="POST" action='{% url "cart_increment" %}'>
-        {% csrf_token %}
-        <input type="hidden" value="{{i.item}}" name="add">
-        <button type='submit'>+</button>
-      </form>
-<p>{{i.quantity}}</p>
-<form method="POST" action='{% url "cart_decrement" %}'>
-        {% csrf_token %}
-        <input type="hidden" value="{{i.item}}" name="delete">
-        <button type='submit'>-</button>
-      </form>
-  
+<div class="container">
+  <h2 class="item-heading">{{i.item}}</h2>
+  <div class="plus-minus-wrapper">
+    <form method="POST" action='{% url "cart_increment" %}'>
+      {% csrf_token %}
+      <input type="hidden" value="{{i.item}}" name="add">
+      <button type='submit'><i class="fas fa-plus-circle plus-button"></i></button>
+    </form>
+
+    <h3 class="quantity-heading">{{i.quantity}}</h3>
+    <form method="POST" action='{% url "cart_decrement" %} '>
+      {% csrf_token %}
+      <input type="hidden" value="{{i.item}}" name="delete">
+      <button type='submit'><i class="fas fa-minus-circle minus-button"></i></button>
+    </form>
+  </div>
+  <i class="far fa-trash-alt dustbin"></i>
+</div>
 {% endfor %}
-<a href="{% url 'home' %}">home</a>
+
+</body>
+</html>

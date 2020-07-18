@@ -64,9 +64,28 @@
 		transition: all 0.2s ease-in;
 	}
 	.arrow-div a i:hover{
-		color: rgb(214, 8, 214);
+		color: rgb(255, 0, 106);
 		transform: scale3d(1.2,1.1,1);
 	}
+
+	.add-to-cart{
+    margin-top: 50px;
+    background-color: #83ff87; /* Green */
+    border: none;
+		outline:none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .add-to-cart:hover{
+    background-color: #00ffe7;
+    transform: scale(1.1,1.1);
+    transition: all 0.2s ease-in-out;
+  }
 
 	</style>
 </head>
@@ -82,7 +101,12 @@
 		<h1 class="product-name">{{product.name}}</h1>
 		<h3 class="product-description">{{product.description}}</h3>
 		<h4 class="product-price">Price: {{product.price}} Rs.</h4>
+		
+	<form method="POST" action='{% url "cart" %}'>
+		{% csrf_token %}
+		<input type="hidden" name="name" value="{{produc.name}}">
+		<button type='submit' class='add-to-cart'>Add to cart</button>
+	</form>
 	</div>
-	
 </body>
 </html>

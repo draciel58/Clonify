@@ -26,10 +26,13 @@
       text-decoration: none;
       color: rgb(255, 255, 255);
     }
-    .home-button{
+    .home-button, .cart-button{
       font-size: 25px;
       text-decoration: none;
       color: rgb(80, 38, 14);
+    }
+    .cart-button{
+      color: rgb(175, 11, 74);
     }
     ::selection{
       background: rgba(241, 137, 255, 0.685);
@@ -184,48 +187,81 @@
     cursor: pointer;
   }
   
+  .contact a, .contact p{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+  }
+  .contact p:hover{
+    background: lightgrey;
+    transform: scale(1.1,1.1);
+    transition: all 0.1s ease-in-out;
+    
+  }
   .menu {
       font-size: 40px;
       color:  rgb(0, 0, 0);
       cursor: pointer;
       z-index: 2;
-    }
-    
-    .logo {
-      font-size: 50px ;
-      color: black;
-      cursor: pointer;
-      z-index: 2;
-    }
+  }
+  
+  .logo {
+    font-size: 50px ;
+    color: black;
+    cursor: pointer;
+    z-index: 2;
+  }
 
-    span{
-      opacity: 0;
-      transition: all 0.4s ease;
-      display: inline-block;
-      transform: translateY(50px);
-    }
-    span.fade{
-      opacity: 1;
-      transform: translateY(0px);
-      color:rgb(175, 11, 74);
-    }
+  span{
+    opacity: 0;
+    transition: all 0.4s ease;
+    display: inline-block;
+    transform: translateY(50px);
+  }
+  span.fade{
+    opacity: 1;
+    transform: translateY(0px);
+    color:rgb(175, 11, 74);
+  }
 
+  .add-to-cart{
+    margin: 30px auto;
+    background-color: #83ff87; /* Green */
+    border: none;
+    outline: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
 
+  .add-to-cart:hover{
+    background-color: #00ffe7;
+    transform: scale(1.1,1.1);
+    transition: all 0.2s ease-in-out;
+  }
   </style>
 </head>
  <body>
   <div id="progressbar"></div>
   <div id="scrollPath"></div>
   <nav>
-    <a class="home-button" href="{% url 'home' %}"><i class="fas fa-home"></i></a>
+    <a class="home-button" href="{% url 'home' %}"><i class="fas fa-home"></i></a>  
+    <a class="cart-button" href="{% url 'home' %}"><i class="far fa-address-card"></i></a>
     <h1 class="logo">CLONIFY</h1>
+    <a class="cart-button" href="{% url 'cart' %}"><i class="fas fa-shopping-bag"></i></a>
     <div class="menu"> + </div>
 
     <div class="nav-open">
       <div class="contact">
-        <h3>Contact</h3>
-        <p>azizsharif2000@gmail.com</p>
-        <p>stuffmukuldoes@gmail.com</p>
+        <h3>Quick Links</h3>
+        <p><a href="{% url 'laptop' %}">Laptops</a></p>
+        <p><a href="{% url 'mobile' %}">Smartphones</a></p>
+        <p><a href="{% url 'speaker' %}">Speakers/Headphones</a></p>
+        <p><a href="{% url 'keyboard' %}">Keybords/Mouse</a></p>
+              
       </div>
 
       <div class="social">
@@ -256,7 +292,7 @@
       <a class="back-to-next"href="javascript:history.go(1)">Next Page</a>
     </div>
   </footer>
-  
+ 
 
   <script type="text/javascript" src="{% static 'static/script.js' %}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
