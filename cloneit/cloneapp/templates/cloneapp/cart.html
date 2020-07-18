@@ -114,10 +114,16 @@
       <input type="hidden" value="{{i.item}}" name="delete">
       <button type='submit'><i class="fas fa-minus-circle minus-button"></i></button>
     </form>
+    <form method="POST" action='{% url "cart_delete" %} '>
+      {% csrf_token %}
+      <input type="hidden" value="{{i.item}}" name="trash">
+      <button type='submit'><i class="far fa-trash-alt dustbin"></i></button>
+    </form>
+    <h3>{{i.total}}</h3>
   </div>
-  <i class="far fa-trash-alt dustbin"></i>
 </div>
 {% endfor %}
+<div class="container">Total price = {{total_price}}</h3>
 
 </body>
 </html>
