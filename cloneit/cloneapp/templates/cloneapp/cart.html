@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
+  {% load static %}
 <head>
 	<title>Cart</title>
 	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/92e551cba2.js" crossorigin="anonymous"></script>
-
 
 <style>
   * {
@@ -27,17 +27,21 @@
 		font-family: 'Poppins', sans-serif;
 		font-weight: 300;
     background-color: white;
-
-	}
+    background: url('{% static "cloneapp/cart checkout 5.svg" %}'), linear-gradient(to bottom, rgba(95, 46, 255, 0.76), white);
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: contain;
+  
+  }
   .container{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.863);
 		display: flex;
 		flex-direction: column;
-		width: 50%;
+		width: 60%;
 		margin: 50px auto;
 		padding: 30px 50px;
 		border-radius: 20px;
-		box-shadow: 0px 0px 15px rgb(123, 255, 0);
+		box-shadow: 0px 0px 15px rgb(39, 1, 128);
 		-webkit-box-pack: center;
           -ms-flex-pack: center;
               justify-content: center;
@@ -46,10 +50,19 @@
             align-items: center;
 		text-align: center;
 	}
+
+  .plus-minus{
+    display: flex;
+    width: 20%;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+
   .plus-button, .minus-button{
     color: rgb(73, 73, 73);
     font-size: 20px;
   }
+
   button{
     background: transparent;
     border: none;
@@ -62,11 +75,13 @@
     transform: scale3d(1.2,1.2,1);
   }
 
-  .plus-minus-wrapper{
+  .individual-item{
     display: flex;
-    width: 80%;
-    justify-content: space-evenly;
+    width: 100%;
+    justify-content: space-between;
   }
+
+  
   .item-heading{
     font-size: 25px;
     margin-bottom: 20px;
@@ -89,41 +104,64 @@
 
   .dustbin{
     color: rgb(255, 0, 106);
-    margin-top: 20px;
     font-size: 20px;
-
   }
+  
+
+  @media (max-width: 1024px) {
+    .container{
+      width: 80% !important;
+		  margin: 60px auto;
+		  padding: 10px 20px;
+      background-color: rgba(93, 255, 215, 0.219);
+      box-shadow: 5px 5px 15px rgb(0, 168, 173);
+    }
+    .arrow-div{
+      display: none;
+      pointer-events: none;
+    }
+    body{
+      background: linear-gradient(to top, rgba(119, 250, 255, 0.486), white); 
+      margin-top: 50%;  
+    }
+  }
+
 </style>
-<div class="arrow-div"> 
-  <a href="{% url 'home' %}"><i class="fas fa-arrow-alt-circle-left"></i></a>
-</div>
+</head>
 
-{% for i in product %}
-<div class="container">
-  <h2 class="item-heading">{{i.item}}</h2>
-  <div class="plus-minus-wrapper">
-    <form method="POST" action='{% url "cart_increment" %}'>
-      {% csrf_token %}
-      <input type="hidden" value="{{i.item}}" name="add">
-      <button type='submit'><i class="fas fa-plus-circle plus-button"></i></button>
-    </form>
-
-    <h3 class="quantity-heading">{{i.quantity}}</h3>
-    <form method="POST" action='{% url "cart_decrement" %} '>
-      {% csrf_token %}
-      <input type="hidden" value="{{i.item}}" name="delete">
-      <button type='submit'><i class="fas fa-minus-circle minus-button"></i></button>
-    </form>
-    <form method="POST" action='{% url "cart_delete" %} '>
-      {% csrf_token %}
-      <input type="hidden" value="{{i.item}}" name="trash">
-      <button type='submit'><i class="far fa-trash-alt dustbin"></i></button>
-    </form>
-    <h3>{{i.total}}</h3>
+<body>
+  <div class="arrow-div"> 
+    <a href="{% url 'home' %}"><i class="fas fa-arrow-alt-circle-left"></i></a>
   </div>
-</div>
-{% endfor %}
-<div class="container">Total price = {{total_price}}</h3>
 
+  <div class="container">
+    {% for i in product %}
+    <div class="individual-item">
+      <h2 class="item-heading">{{i.item}}</h2>
+      
+      <div class="plus-minus">
+        <form method="POST" action='{% url "cart_increment" %}'>
+          {% csrf_token %}
+          <input type="hidden" value="{{i.item}}" name="add">
+          <button type='submit'><i class="fas fa-plus-circle plus-button"></i></button>
+        </form>
+    
+        <h3 class="quantity-heading">{{i.quantity}}</h3>
+        <form method="POST" action='{% url "cart_decrement" %} '>
+          {% csrf_token %}
+          <input type="hidden" value="{{i.item}}" name="delete">
+          <button type='submit'><i class="fas fa-minus-circle minus-button"></i></button>
+        </form>
+      </div>
+      <form method="POST" action='{% url "cart_delete" %} '>
+        {% csrf_token %}
+        <input type="hidden" value="{{i.item}}" name="trash">
+        <button type='submit'><i class="far fa-trash-alt dustbin"></i></button>
+      </form>
+      <h3>{{i.total}}</h3>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="container"><h2>Total price = {{total_price}}</h2></div>
 </body>
 </html>
