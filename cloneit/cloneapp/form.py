@@ -1,5 +1,6 @@
 from django.forms import ModelForm
 from django import forms
+from .models import Userprofile
 
 class RegisterForm(forms.Form):
 	username = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control user', 'placeholder': 'Your Name Goes Here...'}))
@@ -10,3 +11,8 @@ class RegisterForm(forms.Form):
 class SigninForm(forms.Form):
 	username = forms.CharField(max_length=100,widget=forms.TextInput(attrs={'class':'form-control user', 'placeholder': 'Your Name Goes Here...'}))
 	password = forms.CharField(max_length=30,widget=forms.PasswordInput(attrs={'class':'form-control pass', 'placeholder': 'Enter Your Password'}))
+
+class ProfileForm(ModelForm):
+	class Meta:
+		model = Userprofile
+		fields = ['username','phone_number','email','address','profile_picture']
