@@ -1,0 +1,20 @@
+{% load static %}
+<h1>Username- {{profile.username}}</h1>
+{% if profile.phone_number %}
+<h3>Phoneno.- {{profile.phone_number}}</h3>
+{% else %}
+<h3>Phoneno.- Add a phone number...</h3>
+{% endif %}
+<h3>Email- {{profile.email}}</h3>
+{% if profile.address %}
+<h4>Address- {{profile.address}}</h4>
+{% else %}
+<h4>Address- Add your address...</h4>
+{% endif %}
+{% if profile.profile_picture %}
+<img src="{{profile.profile_picture.url}}" alt="img" height="100" width="100">
+{% else %}
+<img src="{% static 'cloneapp/default.jfif' %}" height="100" width="100">
+{% endif %}
+<a href="{% url 'profiledit' %}">Edit</a>
+<a href="{% url 'home' %}">Home</a>
