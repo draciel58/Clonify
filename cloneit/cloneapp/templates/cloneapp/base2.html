@@ -29,14 +29,20 @@
     .home-button, .cart-button{
       font-size: 25px;
       text-decoration: none;
-      color: rgb(80, 38, 14);
+      color: rgb(0, 0, 0);
+      cursor: pointer;
     }
     .cart-button{
       color: rgb(175, 11, 74);
+      
+    }
+    .home-button:hover, .cart-button:hover{
+      transform: scale3d(1.2,1.2,1);
+      transition: all 0.2s ease-in-out;
     }
     ::selection{
-      background: rgba(241, 137, 255, 0.685);
-      color: rgba(255, 255, 255, 0.712);
+      background: aqua;
+      color: rgba(0, 0, 0, 0.712);
     }
     ::-webkit-scrollbar{
       display: none;
@@ -242,21 +248,52 @@
     transform: scale(1.1,1.1);
     transition: all 0.2s ease-in-out;
   }
+
+  button{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #009e69;
+    color: white;
+    font-size: 16px;
+    border: none;
+    width: 80px;
+    border-radius: 30px;
+    outline: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  button:hover{
+    transform: scale3d(1.1,1.1,1);
+    transition: all 0.2s ease-in-out;
+  }
+
+
   </style>
 </head>
  <body>
   <div id="progressbar"></div>
   <div id="scrollPath"></div>
   <nav>
-    <a class="home-button" href="{% url 'home' %}"><i class="fas fa-home"></i></a>  
-    <a class="cart-button" href="{% url 'profileview' %}"><i class="far fa-address-card"></i></a>
-    <h1 class="logo">CLONIFY</h1>
+    <a class="home-button" href="{% url 'home' %}">
+      <i class="fas fa-home"></i>
+    </a>  
+
+    <a class="cart-button" href="{% url 'profileview' %}">
+      <i class="far fa-address-card"></i>
+    </a>
+    
+    <h1 class="logo">CLONIFY</h1>   
     <h4>User-id: {{user.username}}</h4>
+    
     <form method="POST" action="{% url 'logoutuser' %}">
-              {% csrf_token %}
-              <button class="btn btn-danger logout-nav-button" type="submit">Logout</button>
-            </form>
-    <a class="cart-button" href="{% url 'cart' %}"><i class="fas fa-shopping-bag"></i></a>
+    {% csrf_token %}
+      <button class="logout-nav-button" type="submit">Logout</button>
+    </form>
+    
+    <a class="cart-button" 
+    href="{% url 'cart' %}">
+      <i class="fas fa-shopping-bag"></i>
+    </a>
     <div class="menu"> + </div>
 
     <div class="nav-open">
