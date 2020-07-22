@@ -37,7 +37,7 @@ class Userprofile(models.Model):
 	phone_number = models.BigIntegerField(blank=True,null=True)
 	email = models.EmailField(max_length=100,blank=True,null=True)
 	address = models.TextField(max_length=400,blank=True,null=True)
-	profile_picture = models.ImageField(upload_to='cloneapp/profile_image',default='cloneapp/image/asus-zenbook.jpg',blank=True,null=True)
+	profile_picture = models.ImageField(upload_to='cloneapp/profile_image', blank=True, 		null=True)
     
 	def __str__(self):
 		return self.username
