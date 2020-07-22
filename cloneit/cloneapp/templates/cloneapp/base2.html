@@ -282,9 +282,9 @@
     <a class="cart-button" href="{% url 'profileview' %}">
       <i class="far fa-address-card"></i>
     </a>
-    
-    <h1 class="logo">CLONIFY</h1>   
+   
     <h4>User-id: {{user.username}}</h4>
+    <h1 class="logo">CLONIFY</h1>   
     
     <form method="POST" action="{% url 'logoutuser' %}">
     {% csrf_token %}
