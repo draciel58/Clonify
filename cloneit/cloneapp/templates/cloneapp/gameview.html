@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ballgame</title>
+</head>
+<body>
+
+
+<canvas id='gamecanvas' width='800' height="600"></canvas>
+
+<script>
+
+ 
+	
+var canvas;
+var canvasContext;
+var ballX = 400
+var ballY = 300
+var ballspeedX = 2;
+var ballspeedY = 2;
+var paddleY = 40
+var paddleZ = 40 
+var scoreone = 0
+var scoretwo = 0
+var gamespeed = 5
+
+
+
+
+window.onload = function(){
+	canvas = document.getElementById('gamecanvas');
+	canvasContext = canvas.getContext('2d');
+	setInterval(function(){
+		move();
+		draw();},gamespeed)
+
+
+
+	window.addEventListener('keydown', function(event){
+
+	if (event.keyCode==87){
+		paddleY-=21
+
+	}else if (event.keyCode==83){
+		paddleY+=21
+	}
+
+});
+
+	window.addEventListener('keydown', function(e){
+
+	if (e.keyCode==38){
+		paddleZ-=21
+
+	}else if (e.keyCode==40){
+		paddleZ+=21
+	}
+
+});
+
+
+
+function draw(){
+
+	canvasContext.fillStyle = 'black';
+	canvasContext.fillRect(0,0,canvas.width,canvas.height);
+	canvasContext.fillStyle = 'white';
+	canvasContext.fillRect(3,5+paddleY,10,100);
+	canvasContext.fillStyle = 'white';
+	canvasContext.fillRect(canvas.width-13,5+paddleZ,10,100);
+	canvasContext.fillStyle = 'red'
+	canvasContext.beginPath()
+	canvasContext.arc(ballX,ballY,8,0,Math.PI*2,true);
+	canvasContext.fill()
+	canvasContext.font = '50px Georgia'
+	canvasContext.fillStyle = 'white';
+	canvasContext.fillText(scoreone,100,30);
+	canvasContext.fillStyle = 'white';
+	canvasContext.fillText(scoretwo,650,30);
+}
+
+function move(){
+	ballX = ballX + ballspeedX;
+	ballY = ballY + ballspeedY;
+	if (ballX>(canvas.width-13) && (ballY>5+paddleZ && ballY<(102+paddleZ))){
+		ballspeedX = -ballspeedX;
+	}else if (ballX>canvas.width && (ballY>0 && ballY<canvas.height)){
+		scoreone = scoreone+1
+		reset()
+	}else if (ballX<0 && (ballY>0 && ballY<canvas.height)){
+		scoretwo = scoretwo+1
+		reset()
+   	}else if (ballY>canvas.height && (ballX>0 && ballX<canvas.width)){
+		ballspeedY = -ballspeedY;
+	}else if (ballX<13 && (ballY>5+paddleY && ballY<102+paddleY)){
+		ballspeedX = -ballspeedX;		
+	}else if (ballY<0 && (ballX>0 && ballX<canvas.width)){
+		ballspeedY = -ballspeedY;		
+	
+}
+
+ 
+
+function reset(){
+	ballspeedX = -ballspeedX
+	ballX = 400
+	ballY = 300
+}
+
+	
+
+
+
+}
+
+}
+
+
+</script>
+
+</body>
+</html>
