@@ -58,24 +58,36 @@ def loginuser(request):
 @login_required
 def laptop(request):
 	drazil = Products.objects.filter(product='laptop')
+	for i in drazil:
+		i.discounted_price = i.price-(i.price*i.discount)/100
+		i.save()
 	return render(request,'cloneapp/laptop.html',{'laptop':drazil})
 
 
 @login_required
 def mobile(request):
 	drazil = Products.objects.filter(product='mobile')
+	for i in drazil:
+		i.discounted_price = i.price-(i.price*i.discount)/100
+		i.save()
 	return render(request,'cloneapp/mobile.html',{'mobile':drazil})
 
 
 @login_required
 def speaker(request):
 	drazil = Products.objects.filter(product='speakers')
+	for i in drazil:
+		i.discounted_price = i.price-(i.price*i.discount)/100
+		i.save()
 	return render(request,'cloneapp/speaker.html',{'speaker':drazil})
 
 
 @login_required
 def keyboard(request):
 	drazil = Products.objects.filter(product='keyboard')
+	for i in drazil:
+		i.discounted_price = i.price-(i.price*i.discount)/100
+		i.save()
 	return render(request,'cloneapp/keyboard.html',{'keyboard':drazil})
 
 
