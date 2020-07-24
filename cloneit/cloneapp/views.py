@@ -169,4 +169,9 @@ def profiledit(request):
 	else:
 		form = ProfileForm(request.POST, request.FILES, instance=show)
 		form.save()
-		return redirect('profileview')	
+		return redirect('profileview')
+
+@login_required
+def gameview(request):
+	return render(request,'cloneapp/gameview.html')
+
