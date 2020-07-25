@@ -6,7 +6,22 @@ The website is linked to a database and can store quite some amount of data like
 -  The items added to cart by individual users,
 -  Address Book to manage office and home addresses along with the time of day when they can be contacted.
 
-Stack used:
-- Django 3.0 used for Request-Handling
-- HTML/CSS/Javascript used for User-Experience
+STACK USED:
+- Django 3.0 for Request-Handling
+- HTML/CSS/Javascript for User-Interaction
 
+PRE-REQUISITES:
+- Python 
+- Django
+must be installed in your machine.
+You can also create a virtual environment for development purposes. (not compulsory).
+ 
+INSTALLATION STEPS:
+- Clone the repository to your specific target folder
+- Open Terminal/Command Prompt in the root folder
+- run the following 3 commands in the specific order: 
+-- python3 manage.py makemigrations
+-- python3 manage.py migrate
+-- python3 manage.py runserver
+
+This should open up this website at your localhost:8000 probably, or whatever port you've configured your machine to be targeted at.
