@@ -20,8 +20,8 @@ INSTALLATION STEPS:
 - Clone the repository to your specific target folder
 - Open Terminal/Command Prompt in the root folder
 - run the following 3 commands in the specific order: 
--- python3 manage.py makemigrations
--- python3 manage.py migrate
--- python3 manage.py runserver
+- python3 manage.py makemigrations
+- python3 manage.py migrate
+- python3 manage.py runserver
 
-This should open up this website at your localhost:8000 probably, or whatever port you've configured your machine to be targeted at.
+This should open up this website at your localhost:8000 , or whatever port you've configured your machine to be targeted at.
