@@ -290,7 +290,8 @@
     {% csrf_token %}
       <button class="logout-nav-button" type="submit">Logout</button>
     </form>
-    <a href="{% url 'gameview' %}">Wanna Have Fun!!</a>
+    <a class="cart-button" href="{% url 'gameview' %}">
+      <i class="fas fa-gamepad"></i></a>
     <a class="cart-button" 
     href="{% url 'cart' %}">
       <i class="fas fa-shopping-bag"></i>

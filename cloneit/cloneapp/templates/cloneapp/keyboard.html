@@ -105,6 +105,24 @@ body {
   padding: 5px;
 }
 
+.off-discount{
+  padding: 5px;
+  display: inline-block;
+  background-color: black;
+  color: white;
+  animation: glowing 500ms ease-in-out infinite alternate;
+}
+@keyframes glowing {
+  from{
+    background-color: black;
+    color: white;
+  }
+  to {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }
+}
+
 
 @media (max-width: 1024px) {
   .banner {
@@ -174,13 +192,14 @@ body {
   </div>
   <div class="laptop-subs">
     <div class="subs-description">
-      <h3>Product Description</h3>
+      <h2>Product Description</h2>
       <p>{{produc.short_description}}</p>
       {% if produc.discount %}
-      <h3>Off {{produc.discount}}%</h3>
+      
       <h2>Price</h2>
-      <h4>{{produc.price}}</h4>
-      <h4>{{produc.discounted_price}}</h4>
+      <h3 class="off-discount">Off {{produc.discount}}%</h3>
+      <p style="text-decoration: line-through;">{{produc.price}}</p>
+      <h3>{{produc.discounted_price}}</h3>
       {% else %}
        <h2>Price</h2>
       <h4>{{produc.price}}></h4>
